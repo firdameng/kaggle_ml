@@ -33,24 +33,24 @@ def score_dataset(X_train, X_test, y_train, y_test):
 
 
 # # delete columns with missing value
-# cols_with_missing = [col for col in X_train.columns
-#                                  if X_train[col].isnull().any()]
-# reduced_X_train = X_train.drop(cols_with_missing, axis=1)
-# reduced_X_test  = X_test.drop(cols_with_missing, axis=1)
-# print("Mean Absolute Error from dropping columns with Missing Values:")
-# print(score_dataset(reduced_X_train, reduced_X_test, y_train, y_test))
-#
+cols_with_missing = [col for col in X_train.columns
+                                 if X_train[col].isnull().any()]
+reduced_X_train = X_train.drop(cols_with_missing, axis=1)
+reduced_X_test  = X_test.drop(cols_with_missing, axis=1)
+print("Mean Absolute Error from dropping columns with Missing Values:")
+print(score_dataset(reduced_X_train, reduced_X_test, y_train, y_test))
+
 # # replace missing value with mean value in column with missing value
 from sklearn.impute import SimpleImputer
-#
-# my_imputer = SimpleImputer()
-# imputed_X_train = my_imputer.fit_transform(X_train)   #first fit_transform,second transform
-# imputed_X_test = my_imputer.transform(X_test)
-# print("Mean Absolute Error from Imputation:")
-# print(score_dataset(imputed_X_train, imputed_X_test, y_train, y_test))
+
+my_imputer = SimpleImputer()
+imputed_X_train = my_imputer.fit_transform(X_train)   #first fit_transform,second transform
+imputed_X_test = my_imputer.transform(X_test)
+print("Mean Absolute Error from Imputation:")
+print(score_dataset(imputed_X_train, imputed_X_test, y_train, y_test))
 
 
-# most cool method
+# 通过添加缺失值的标识列，但在这个例子中效果不太佳
 imputed_X_train_plus = X_train.copy()
 imputed_X_test_plus = X_test.copy()
 
