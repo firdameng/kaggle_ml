@@ -44,7 +44,7 @@ print(score_dataset(reduced_X_train, reduced_X_test, y_train, y_test))
 from sklearn.impute import SimpleImputer
 
 my_imputer = SimpleImputer()
-imputed_X_train = my_imputer.fit_transform(X_train)   #first fit_transform,second transform
+imputed_X_train = my_imputer.fit_transform(X_train)   #first fit_transform,second transform，默认用均值填充缺失值
 imputed_X_test = my_imputer.transform(X_test)
 print("Mean Absolute Error from Imputation:")
 print(score_dataset(imputed_X_train, imputed_X_test, y_train, y_test))

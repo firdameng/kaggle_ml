@@ -16,7 +16,7 @@ test_X = my_imputer.transform(test_X)
 
 from xgboost import XGBRegressor
 
-my_model = XGBRegressor()
+my_model = XGBRegressor(silent=False)
 # Add silent=True to avoid printing out updates with each cycle
 my_model.fit(train_X, train_y, verbose=False)
 
